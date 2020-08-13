@@ -9,9 +9,9 @@ filepath = directory+'/labels.txt'
 out_df = pd.DataFrame(columns=['X', 'Y', 'Z','label'])
 label_df = pd.read_csv(filepath, header=None, delim_whitespace=True)
 exp_num = 1
-for entry in sorted(os.listdir(directory)):
+for entry in sorted(os.listdir(directory+'/acc')):
     if (entry != 'labels.txt')and ('gyro' not in entry):
-        dir_ = directory+ '/'+ entry
+        dir_ = directory+ '/acc/'+ entry
         b = pd.read_csv(dir_,header=None,delim_whitespace=True)
         b.columns = ['X', 'Y', 'Z']
         b['label'] = 0
