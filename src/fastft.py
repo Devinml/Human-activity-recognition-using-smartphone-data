@@ -16,7 +16,7 @@ def compute_fft(data, dt=.001):
 
 if __name__ == '__main__':
 
-    dt = .001
+    dt = .02
     t = np.arange(0,1,dt)
     f = np.sin(2*np.pi*50*t) + np.sin(2*np.pi*120*t)
     f = f + 2.5*np.random.randn(len(t))
