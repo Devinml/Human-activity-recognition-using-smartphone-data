@@ -1,13 +1,10 @@
+import logging
 import pandas as pd
 import numpy as np
 from intensity_bands import IntensityBands
 import csv
 
-if __name__ == '__main__':
-    participants = [i for i in range(1,31)]
-    activities = [i for i in range(1,7)]
-    df = pd.read_csv('data/merged_data_save.csv')
-    count = 0 
+def write_processed_data(log,df):
     with open('calculated_data.csv', 'w', newline='') as csvfile:
         writer = csv.writer(csvfile, delimiter=',')
         writer.writerow(['Participant',
@@ -37,10 +34,11 @@ if __name__ == '__main__':
                 activity = activities[j]
                 stop = 120
                 start = 0
+                x = df[(df['label'] == activities[j]) & (df['user'] == participants[i])]
                 while stop<len(df):
                     try:
-                        x = df.loc[start:stop]
-                        intensities = IntensityBands(x)
+                        data = x.iloc[start:stop]
+                        intensities = IntensityBands(data)
                         intensities._compute_power()
                         (x1, x2, x3,
                          y1, y2, y3,
@@ -58,8 +56,17 @@ if __name__ == '__main__':
                                          gyro_z1, gyro_z2, gyro_z3])
                         start += 120
                         stop += 120
-                    except :
+                    except Exception as e:
+                        log.error(e)
+                        # raise
                         break
-                count += 1
-        # print(df[(df['label'] == activities[i]) & (df['user'] == participants[j])])
+                
 
+
+if __name__ == '__main__':
+    participants = [i for i in range(1,31)]
+    activities = [i for i in range(1,7)]
+    df = pd.read_csv('data/merged_data_save.csv') 
+    logging.basicConfig(filename='erros/log_errors.Log',level=logging.DEBUG)
+    log = logging.getLogger()
+    write_processed_data(log,df)
