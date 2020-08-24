@@ -7,7 +7,7 @@ from sklearn.metrics import classification_report
 from sklearn.linear_model import LogisticRegressionCV, LogisticRegression
 
 
-def read_data(fp='data/calculated_data.csv'):
+def read_data(fp='data/stats_method.csv'):
     return pd.read_csv(fp)
 
 
@@ -80,4 +80,4 @@ def logclassifier():
 
 if __name__ == '__main__':
     random_forest()
-    logclassifier()
+    # logclassifier()

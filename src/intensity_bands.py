@@ -59,6 +59,7 @@ class IntensityBands(object):
          gyro_y1, gyro_y2, gyro_y3,
          gyro_z1, gyro_z2, gyro_z3) = intensity_bands()
         """
+        self._compute_power()
         x1 = 0
         x2 = 0
         x3 = 0
@@ -118,20 +119,20 @@ class DataStats(object):
         self.df = df
     
     def means(self):
-        self.x_mean = df['X'].mean()
-        self.y_mean = df['Y'].mean()
-        self.z_mean = df['Z'].mean()
-        self.gyrox_mean = df['gyroX'].mean()
-        self.gyroy_mean = df['gyroY'].mean()
-        self.gyroz_mean = df['gyroZ'].mean()
+        self.x_mean = self.df['X'].mean()
+        self.y_mean = self.df['Y'].mean()
+        self.z_mean = self.df['Z'].mean()
+        self.gyrox_mean = self.df['gyroX'].mean()
+        self.gyroy_mean = self.df['gyroY'].mean()
+        self.gyroz_mean = self.df['gyroZ'].mean()
     
     def std(self):
-        self.x_std = df['X'].std()
-        self.y_std = df['Y'].std()
-        self.z_std = df['Z'].std()
-        self.gyrox_std = df['gyroX'].std()
-        self.gyroy_std = df['gyroY'].std()
-        self.gyroz_std = df['gyroZ'].std()
+        self.x_std = self.df['X'].std()
+        self.y_std = self.df['Y'].std()
+        self.z_std = self.df['Z'].std()
+        self.gyrox_std = self.df['gyroX'].std()
+        self.gyroy_std = self.df['gyroY'].std()
+        self.gyroz_std = self.df['gyroZ'].std()
 
     def get_stats(self):
         self.std()
@@ -151,16 +152,14 @@ class DataStats(object):
 
 
 if __name__ == "__main__":
-    df = pd.read_csv('data/merged_data.csv')
+    df = pd.read_csv('data/merged_data_save.csv')
     df_up = df[df['label'] == 2]
     spec = IntensityBands(df_up)
-    spec._compute_power()
     (x1, x2, x3,
      y1, y2, y3,
      z1, z2, z3,
      gyro_x1, gyro_x2, gyro_x3,
      gyro_y1, gyro_y2, gyro_y3,
      gyro_z1, gyro_z2, gyro_z3) = spec.intensity_bands()
-    stats = DataStats(df_up)
-    
+    stats = DataStats(df_up)    
     print(stats.get_stats())
