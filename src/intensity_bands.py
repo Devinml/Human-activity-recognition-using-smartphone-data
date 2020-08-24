@@ -112,6 +112,43 @@ class IntensityBands(object):
                 indexer += 1
         return tuple(integraters)
 
+class DataStats(object):
+
+    def __init__(self,df):
+        self.df = df
+    
+    def means(self):
+        self.x_mean = df['X'].mean()
+        self.y_mean = df['Y'].mean()
+        self.z_mean = df['Z'].mean()
+        self.gyrox_mean = df['gyroX'].mean()
+        self.gyroy_mean = df['gyroY'].mean()
+        self.gyroz_mean = df['gyroZ'].mean()
+    
+    def std(self):
+        self.x_std = df['X'].std()
+        self.y_std = df['Y'].std()
+        self.z_std = df['Z'].std()
+        self.gyrox_std = df['gyroX'].std()
+        self.gyroy_std = df['gyroY'].std()
+        self.gyroz_std = df['gyroZ'].std()
+
+    def get_stats(self):
+        self.std()
+        self.means()
+        return (self.x_mean,
+                self.y_mean,
+                self.z_mean,
+                self.gyrox_mean,
+                self.gyroy_mean,
+                self.gyroz_mean,
+                self.x_std,
+                self.y_std,
+                self.z_std,
+                self.gyrox_std,
+                self.gyroy_std,
+                self.gyroz_std)
+
 
 if __name__ == "__main__":
     df = pd.read_csv('data/merged_data.csv')
@@ -124,4 +161,6 @@ if __name__ == "__main__":
      gyro_x1, gyro_x2, gyro_x3,
      gyro_y1, gyro_y2, gyro_y3,
      gyro_z1, gyro_z2, gyro_z3) = spec.intensity_bands()
-    print(spec.intensity_bands())
+    stats = DataStats(df_up)
+    
+    print(stats.get_stats())
