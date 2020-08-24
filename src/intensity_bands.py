@@ -17,7 +17,7 @@ class IntensityBands(object):
     integral of spectrum evaluated a the 3 spectrums defined above
     """
     def __init__(self, df):
-        self.df = df
+        self.df = df 
 
     def _compute_power(self):
         """
