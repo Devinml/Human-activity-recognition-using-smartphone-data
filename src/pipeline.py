@@ -94,6 +94,21 @@ def write_processed_data(log, df,method):
                         break
 
 def spectrum_method(data,writer,i,j,participants,activities):
+    """
+    This Function gets data from the intensty class and writes them
+    to a CSV file
+    Parmaeters
+    ----------
+    data = Dataframe of the subseted data
+    writer = the writing object for writing to a csc
+    i = the participant indexer
+    j = the activity indexer
+    participants = list of participants
+    activiites = list of activities
+    Returns
+    --------
+    None
+    """
     intense = IntensityBands(data)
     # intense._compute_power()
     (x1, x2, x3,
@@ -114,6 +129,21 @@ def spectrum_method(data,writer,i,j,participants,activities):
 
 
 def stats_method(data,writer,i,j,participants,activities):
+    """
+    This Function gets data from the stats class and writes them
+    to a CSV file
+    Parmaeters
+    ----------
+    data = Dataframe of the subseted data
+    writer = the writing object for writing to a csc
+    i = the participant indexer
+    j = the activity indexer
+    participants = list of participants
+    activiites = list of activities
+    Returns
+    --------
+    None
+    """
     stat = DataStats(data)
     (x_mean,
      y_mean,

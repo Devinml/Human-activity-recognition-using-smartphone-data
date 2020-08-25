@@ -17,7 +17,7 @@ class IntensityBands(object):
     integral of spectrum evaluated a the 3 spectrums defined above
     """
     def __init__(self, df):
-        self.df = df 
+        self.df = df
 
     def _compute_power(self):
         """
@@ -113,12 +113,33 @@ class IntensityBands(object):
                 indexer += 1
         return tuple(integraters)
 
-class DataStats(object):
 
+class DataStats(object):
+    """
+    Calculates the statistics of the accelration Data.
+    For XYZ and GYRO XYZ it will retrun mean and 
+    standard deviation
+    Parameters
+    ----------
+    subsample of accelerometer data
+    Returns
+    -------
+    statistics of the acceleration data
+    """
     def __init__(self,df):
         self.df = df
     
     def means(self):
+        """
+        Computes the mean for each columns
+        Parameters
+        ----------
+        self
+        DataFrame of data
+        Returns
+        -------
+        None
+        """
         self.x_mean = self.df['X'].mean()
         self.y_mean = self.df['Y'].mean()
         self.z_mean = self.df['Z'].mean()
@@ -127,6 +148,16 @@ class DataStats(object):
         self.gyroz_mean = self.df['gyroZ'].mean()
     
     def std(self):
+        """
+        Computes the std for each columns
+        Parameters
+        ----------
+        self
+        DataFrame of data
+        Returns
+        -------
+        None
+        """
         self.x_std = self.df['X'].std()
         self.y_std = self.df['Y'].std()
         self.z_std = self.df['Z'].std()
@@ -135,6 +166,16 @@ class DataStats(object):
         self.gyroz_std = self.df['gyroZ'].std()
 
     def get_stats(self):
+        """
+        Computes the mean for each columns
+        Parameters
+        ----------
+        self
+        DataFrame of data
+        Returns
+        -------
+        Returns the Calculated Data
+        """
         self.std()
         self.means()
         return (self.x_mean,
