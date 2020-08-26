@@ -40,7 +40,17 @@ At first pass, it doesn't look like there isn't much of a difference between the
   <img src="imgs/gyroY_Up_walk.png" >
 </p>
 
-I broke up my into 3 sections in which the peaks were captured. I did thies to get the strongest signal in the frequency bands.
+I broke up my into 3 sections in which the peaks most notable seperable and which would capture most of the peaks.
 <p align="left">
   <img src="imgs/gyroY_down_integral.png" ><img src="imgs/gyroY_walk_integral.png" >
+</p>
+
+## Data Prep
+
+I prepared 3 data sets to train a model on by taking subsamples of my original dataset, to avoid problems in calculating the spectral density calculations. The data was broken up by participants and activity and I took 120 samples of that data and made a new row of data from calculating the statistics and the integral of the intensity bands of those 120 points. This led to 3 data sets:
+1. Stats Dataset: where mean and standard deviation were captured for each window of data evaluated at each column. 
+2. Spectral Density Dataset: where for each window of data evaluated at each column. 
+3. Spectra Density and Stats Dataset: This combines the stats dataset and the spectral Density Dataset.
+<p align="center">
+  <img src="imgs/4cuj4u.gif" >
 </p>
