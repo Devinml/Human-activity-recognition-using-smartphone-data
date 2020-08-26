@@ -30,8 +30,8 @@ def boxplots(df, fig, ax, acc_metric):
     box = plt.boxplot(data,
                       showfliers=False,
                       patch_artist=True,
-                      medianprops=dict(color='white'))
-    colors = ['blue', 'red', 'green', 'black', 'violet', 'orange']
+                      medianprops=dict(color='k'))
+    colors = ['blue', 'red', 'green', 'c', 'violet', 'orange']
     for patch, color in zip(box['boxes'], colors):
         patch.set_facecolor(color)
     plt.xticks([i for i in range(1, 7)], ['Walking',
