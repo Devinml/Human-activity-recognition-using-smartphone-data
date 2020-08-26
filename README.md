@@ -42,8 +42,5 @@ At first pass, it doesn't look like there isn't much of a difference between the
 
 I broke up my into 3 sections in which the peaks were captured. I did thies to get the strongest signal in the frequency bands.
 <p align="left">
-  <img src="imgs/gyroY_down_integral.png" >
-</p>
-<p align="right">
-  <img src="imgs/gyroY_walk_integral.png" >
+  <img src="imgs/gyroY_down_integral.png" ><img src="imgs/gyroY_walk_integral.png" >
 </p>
