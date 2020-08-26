@@ -258,8 +258,6 @@ if __name__ == '__main__':
     participants = [i for i in range(1, 31)]
     activities = [i for i in range(1, 7)]
     df = pd.read_csv('data/merged_data_save.csv')
-
-    # print(df.head())
     logging.basicConfig(filename='erros/log_errors.Log', level=logging.DEBUG)
     log = logging.getLogger()
     write_processed_data(log, df, 'joined')

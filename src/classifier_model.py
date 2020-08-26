@@ -3,7 +3,7 @@ from sklearn.model_selection import train_test_split
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import multilabel_confusion_matrix
-from sklearn.metrics import classification_report
+from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.linear_model import LogisticRegressionCV, LogisticRegression
 import numpy as np
 
@@ -152,3 +152,4 @@ if __name__ == '__main__':
     print('Log Coef')
     print(clf.coef_.shape)
     print(clf.classes_)
+    print(confusion_matrix(y_test_log,prediction))

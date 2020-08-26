@@ -16,3 +16,6 @@ Note: The orientation of the phone was kept the same during all experiments but 
 </p>
 
 ## EDA
+<p align="center">
+  <img src="imgs/X_acc_box.png" >
+</p>

@@ -27,7 +27,10 @@ def acc_at_activity(df, acc_metric):
 
 def boxplots(df, fig, ax, acc_metric):
     data = acc_at_activity(df, acc_metric)
-    ax.boxplot(data, showfliers=False)
+    box = plt.boxplot(data, showfliers=False, patch_artist=True)
+    colors = ['blue', 'red', 'green', 'black', 'violet', 'orange']
+    for patch, color in zip(box['boxes'], colors):
+        patch.set_facecolor(color)
     plt.xticks([i for i in range(1, 7)], ['Walking',
                                           'Walking up',
                                           'Walking down',
@@ -40,7 +43,7 @@ def boxplots(df, fig, ax, acc_metric):
     plt.xticks(rotation=45)
 
 
-if __name__ == '__main__':
+def main():
     df = pd.read_csv('data/merged_data_save.csv')
     plt.style.use('ggplot')
     fig, ax = plt.subplots(figsize=(12, 8))
@@ -49,4 +52,13 @@ if __name__ == '__main__':
     boxplots(df=df, fig=fig2, ax=ax2, acc_metric='Y')
     fig3, ax3 = plt.subplots(figsize=(12, 8))
     boxplots(df=df, fig=fig3, ax=ax3, acc_metric='Z')
+    fig4, ax4 = plt.subplots(figsize=(12, 8))
+    boxplots(df=df, fig=fig4, ax=ax4, acc_metric='gyroX')
+    fig5, ax5 = plt.subplots(figsize=(12, 8))
+    boxplots(df=df, fig=fig5, ax=ax5, acc_metric='gyroY')
+    fig6, ax6 = plt.subplots(figsize=(12, 8))
+    boxplots(df=df, fig=fig6, ax=ax6, acc_metric='gyroZ')
     plt.show()
+
+if __name__ == '__main__':
+    main()
