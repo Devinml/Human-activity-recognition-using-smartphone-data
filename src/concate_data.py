@@ -21,6 +21,8 @@ def merge_data_and_save(directory, root):
     exp_num = 1
     acc_list = sorted(os.listdir(directory+'/acc'))
     gyro_list = sorted(os.listdir(directory+'/gyro'))
+    # Here I am looping through my data Directory and joining all of my acc
+    # data and gyro data and labels because they were all in different files
     for i in range(len(acc_list)):
         dir_ = directory + '/acc/' + acc_list[i]
         b = pd.read_csv(dir_, header=None, delim_whitespace=True)

@@ -4,6 +4,18 @@ import seaborn as sns
 
 
 def x_y_z_gyros(df, activity):
+    """
+    Returns the activity accerometer values at a given
+    activity label
+    Parameters
+    ----------
+    DataFrame of data
+    activity label
+    Returns
+    -------
+    list of :
+    x,y,z,gyrox,gyroy,gyroz
+    """
     df_out = df.copy()
     df_out = df_out[df_out['label'] == activity]
     x = df_out['X']
@@ -16,6 +28,15 @@ def x_y_z_gyros(df, activity):
 
 
 def acc_at_activity(df, acc_metric):
+    """
+    Returns one accelerometer value for all activities
+    Parameters
+    ----------
+    DataFrame of data
+    Returns
+    -------
+    List of acceleration data
+    """
     df_out = df.copy()
     x1 = x2 = x3 = x4 = x5 = x6 = 0
     list_of_xs = [x1, x2, x3, x4, x5, x6]
@@ -26,6 +47,19 @@ def acc_at_activity(df, acc_metric):
 
 
 def boxplots(df, fig, ax, acc_metric):
+    """
+    This function plots all of my acceleration data for
+    all activities
+    Parameters
+    ----------
+    DataFrame of Data
+    figure to plot on
+    axis to plot on
+    What acceleration metric you want to plot
+    Returns
+    -------
+    Boxplot of activities
+    """
     data = acc_at_activity(df, acc_metric)
     box = plt.boxplot(data,
                       showfliers=False,
@@ -47,7 +81,17 @@ def boxplots(df, fig, ax, acc_metric):
 
 
 def main():
-    font = {'size'   : 16}
+    """
+    This function runs all of the plots I want to keep
+    my IFEM clean
+    Parameters
+    ----------
+    None
+    Returns
+    -------
+    Boxplot of activities at all accelerations
+    """
+    font = {'size': 16}
     plt.rc('font', **font)
     df = pd.read_csv('data/merged_data_save.csv')
     plt.style.use('ggplot')
@@ -59,11 +103,12 @@ def main():
     boxplots(df=df, fig=fig3, ax=ax3, acc_metric='Z')
     fig4, ax4 = plt.subplots(figsize=(10, 9))
     boxplots(df=df, fig=fig4, ax=ax4, acc_metric='gyroX')
-    fig5, ax5 = plt.subplots(figsize=(10,9))
+    fig5, ax5 = plt.subplots(figsize=(10, 9))
     boxplots(df=df, fig=fig5, ax=ax5, acc_metric='gyroY')
     fig6, ax6 = plt.subplots(figsize=(10, 9))
     boxplots(df=df, fig=fig6, ax=ax6, acc_metric='gyroZ')
     plt.show()
+
 
 if __name__ == '__main__':
     main()

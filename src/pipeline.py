@@ -22,6 +22,8 @@ def write_processed_data(log, df, method):
     data_file = input("Specifiy name and location     ")
     with open(data_file, 'w', newline='') as csvfile:
         writer = csv.writer(csvfile, delimiter=',')
+        # I am writing the first row depending on which data set I
+        # want to collect together
         if method == 'spectrum':
             writer.writerow(['Participant',
                              'activitiy',
@@ -91,8 +93,12 @@ def write_processed_data(log, df, method):
                              'gyroz_0_1.17',
                              'gyroz_1.17_2.34',
                              'gyroz_2.34_4.1'])
+        # Here I am looping through each participant and activity 
+        # to make sure no data leakage occurs
         for i in range(len(participants)):
             for j in range(len(activities)):
+                # This print statements just lets me know the program 
+                # is still running because it takes a while
                 print(f'participant : {i}  ' + ('='*j) + '>')
                 user = participants[i]
                 activity = activities[j]
@@ -102,6 +108,7 @@ def write_processed_data(log, df, method):
                        (df['user'] == user)]
                 while stop < len(x):
                     try:
+                        # Wrapped into a try catch block and logging errors
                         data = x.iloc[start:stop]
                         if method == 'spectrum':
                             print(i, j, 'inloop')
@@ -129,7 +136,7 @@ def write_processed_data(log, df, method):
                         stop += 120
                     except Exception as e:
                         log.error(e)
-                        raise
+                        # raise
                         break
 
 
