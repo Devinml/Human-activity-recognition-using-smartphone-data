@@ -150,7 +150,6 @@ def spectrum_method(data, writer, i, j, participants, activities):
     None
     """
     intense = IntensityBands(data)
-    # intense._compute_power()
     (x1, x2, x3,
      y1, y2, y3,
      z1, z2, z3,
