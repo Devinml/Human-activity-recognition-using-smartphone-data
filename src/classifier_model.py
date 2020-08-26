@@ -5,6 +5,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import multilabel_confusion_matrix
 from sklearn.metrics import classification_report
 from sklearn.linear_model import LogisticRegressionCV, LogisticRegression
+import numpy as np
 
 
 def read_data(spectrum):
@@ -22,6 +23,10 @@ def read_data(spectrum):
     """
     if spectrum:
         fp = 'data/calculated_data_save.csv'
+        return pd.read_csv(fp)
+    elif spectrum is None:
+        print('in correct loop')
+        fp = 'data/joined_calc_data.csv'
         return pd.read_csv(fp)
     else:
         fp = 'data/stats_method.csv'
@@ -104,7 +109,7 @@ def random_forest(random_forest, spectrum):
     spectrum = Boolean
     Returns
     -------
-    Classification report of the Random Forest Classifier
+    predictions on test set, y_test, and model
     """
     clf = RandomForestClassifier(random_state=0)
     (X_train,
@@ -113,7 +118,7 @@ def random_forest(random_forest, spectrum):
      y_test) = prep_data(random_forest, spectrum)
     clf.fit(X_train, y_train)
     prediction = clf.predict(X_test)
-    print(classification_report(y_test, prediction))
+    return prediction, y_test, clf
 
 
 def logclassifier(random_forest, spectrum):
@@ -125,7 +130,7 @@ def logclassifier(random_forest, spectrum):
     spectrum = Boolean
     Returns
     -------
-    Classification report of the log classifier
+    predictions on test set, y_test, and model
     """
     clf = LogisticRegression(max_iter=1000)
     (X_train,
@@ -134,9 +139,16 @@ def logclassifier(random_forest, spectrum):
      y_test) = split_data_standard(random_forest, spectrum)
     clf.fit(X_train, y_train)
     prediction = clf.predict(X_test)
-    print(classification_report(y_test, prediction))
+    return prediction, y_test, clf
 
 
 if __name__ == '__main__':
-    random_forest(True, False)
-    logclassifier(False, False)
+    preds, y_test_rf, rf = random_forest(True, None)
+    prediction, y_test_log, clf = logclassifier(False, None)
+    print("Random Forest")
+    print(classification_report(y_test_rf, preds))
+    print('Log Classification')
+    print(classification_report(y_test_log, prediction))
+    print('Log Coef')
+    print(clf.coef_.shape)
+    print(clf.classes_)

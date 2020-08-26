@@ -117,7 +117,7 @@ class IntensityBands(object):
 class DataStats(object):
     """
     Calculates the statistics of the accelration Data.
-    For XYZ and GYRO XYZ it will retrun mean and 
+    For XYZ and GYRO XYZ it will retrun mean and
     standard deviation
     Parameters
     ----------
@@ -126,9 +126,9 @@ class DataStats(object):
     -------
     statistics of the acceleration data
     """
-    def __init__(self,df):
+    def __init__(self, df):
         self.df = df
-    
+
     def means(self):
         """
         Computes the mean for each columns
@@ -146,7 +146,7 @@ class DataStats(object):
         self.gyrox_mean = self.df['gyroX'].mean()
         self.gyroy_mean = self.df['gyroY'].mean()
         self.gyroz_mean = self.df['gyroZ'].mean()
-    
+
     def std(self):
         """
         Computes the std for each columns
@@ -202,5 +202,5 @@ if __name__ == "__main__":
      gyro_x1, gyro_x2, gyro_x3,
      gyro_y1, gyro_y2, gyro_y3,
      gyro_z1, gyro_z2, gyro_z3) = spec.intensity_bands()
-    stats = DataStats(df_up)    
+    stats = DataStats(df_up)
     print(stats.get_stats())
