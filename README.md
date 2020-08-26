@@ -48,9 +48,53 @@ I broke up my into 3 sections in which the peaks most notable seperable and whic
 ## Data Prep
 
 I prepared 3 data sets to train a model on by taking subsamples of my original dataset, to avoid problems in calculating the spectral density calculations. The data was broken up by participants and activity and I took 120 samples of that data and made a new row of data from calculating the statistics and the integral of the intensity bands of those 120 points. This led to 3 data sets:
-1. Stats Dataset: where mean and standard deviation were captured for each window of data evaluated at each column. 
-2. Spectral Density Dataset: where for each window of data evaluated at each column. 
-3. Spectra Density and Stats Dataset: This combines the stats dataset and the spectral Density Dataset.
+1. Stats Dataset: where mean and standard deviation were captured for each window of data evaluated at each column. This yielded 6390 rows by 12 columns 
+2. Spectral Density Dataset: where for each window of data evaluated at each column. This had 6390 rows by 18 columns
+3. Spectra Density and Stats Dataset: This combines the stats dataset and the spectral Density Dataset. This had 6390 rows by 30 columns
 <p align="center">
   <img src="imgs/4cuj4u.gif" >
 </p>
+
+## Model Evaluation
+
+Using a Random Forest Classifier and with 100 trees I trained the model on 20 of the participants for the study and used the remaining 10 as my hold out set. 
+Stats Dataset: 
+|              |   precision |   recall |   f1-score |   support |
+|:-------------|------------:|---------:|-----------:|----------:|
+| 1            |    0.96     | 0.79     |   0.87     |       355 |
+| 2            |    0.86     | 0.87     |   0.86     |       319 |
+| 3            |    0.96     | 0.90     |   0.93     |       298 |
+| 4            |    0.92     | 0.90     |   0.91     |       334 |
+| 5            |    0.92     | 0.91     |   0.92     |       367 |
+| 6            |    1        | 0.99     |   0.99     |       353 |
+| micro avg    |    0.94     | 0.89     |   0.91     |      2026 |
+| macro avg    |    0.94     | 0.89     |   0.91     |      2026 |
+| weighted avg |    0.94     | 0.89     |   0.91     |      2026 |
+| samples avg  |    0.89     | 0.89     |   0.89     |      2026 |
+Spectral Density Dataset: 
+|              |   precision |   recall |   f1-score |   support |
+|:-------------|------------:|---------:|-----------:|----------:|
+| 1            |    0.94     | 0.88     |   0.91     |       363 |
+| 2            |    0.95     | 0.79     |   0.86     |       327 |
+| 3            |    0.90     | 0.81     |   0.85     |       303 |
+| 4            |    0.85     | 0.67     |   0.75     |       343 |
+| 5            |    0.84     | 0.65     |   0.74     |       373 |
+| 6            |    0.92     | 0.66     |   0.77     |       362 |
+| micro avg    |    0.90     | 0.74     |   0.81     |      2071 |
+| macro avg    |    0.90     | 0.74     |   0.81     |      2071 |
+| weighted avg |    0.90     | 0.74     |   0.81     |      2071 |
+| samples avg  |    0.74     | 0.74     |   0.74     |      2071 |
+Combined Dataset:
+|              |   precision |   recall |   f1-score |   support |
+|:-------------|------------:|---------:|-----------:|----------:|
+| 1            |    0.99     | 0.87     |   0.93     |       355 |
+| 2            |    0.89     | 0.88     |   0.89     |       319 |
+| 3            |    0.99     | 0.93     |   0.96     |       298 |
+| 4            |    0.93     | 0.89     |   0.91     |       334 |
+| 5            |    0.93     | 0.93     |   0.93     |       367 |
+| 6            |    1        | 0.99     |   0.99     |       353 |
+| micro avg    |    0.95     | 0.92     |   0.94     |      2026 |
+| macro avg    |    0.95     | 0.92     |   0.94     |      2026 |
+| weighted avg |    0.95     | 0.92     |   0.94     |      2026 |
+| samples avg  |    0.92     | 0.92     |   0.92     |      2026 |
+

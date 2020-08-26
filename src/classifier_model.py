@@ -153,4 +153,4 @@ if __name__ == '__main__':
     print(clf.coef_.shape)
     print(clf.classes_)
     print(confusion_matrix(y_test_log,prediction))
-    print(pd.DataFrame(classification_report(y_test_log, prediction,output_dict=True)).T.to_markdown())
+    print(pd.DataFrame(classification_report(y_test_rf, preds,output_dict=True)).T.to_markdown())
