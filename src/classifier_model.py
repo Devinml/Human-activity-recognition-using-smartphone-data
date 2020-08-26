@@ -25,7 +25,6 @@ def read_data(spectrum):
         fp = 'data/calculated_data_save.csv'
         return pd.read_csv(fp)
     elif spectrum is None:
-        print('in correct loop')
         fp = 'data/joined_calc_data.csv'
         return pd.read_csv(fp)
     else:
@@ -152,5 +151,8 @@ if __name__ == '__main__':
     print('Log Coef')
     print(clf.coef_.shape)
     print(clf.classes_)
-    print(confusion_matrix(y_test_log,prediction))
-    print(pd.DataFrame(classification_report(y_test_rf, preds,output_dict=True)).T.to_markdown())
+    print(confusion_matrix(y_test_log, prediction))
+    results = pd.DataFrame(classification_report(y_test_rf,
+                                                 preds,
+                                                 output_dict=True))
+    print(results.T.to_markdown())
