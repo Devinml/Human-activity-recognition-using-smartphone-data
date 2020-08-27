@@ -59,7 +59,7 @@ I broke up my into 3 sections in which the peaks most notable seperable and whic
 
 ## Model Evaluation
 
-Using a Random Forest Classifier and with 100 trees I trained the model on 20 of the participants for the study and used the remaining 10 as my holdout set.
+Using a Random Forest Classifier and with 100 trees I trained the model on 20 of the participants for the study and used the remaining 10 as my holdout set. Here are the resutls of the models, tested on a holdout set. 
 
 <p align="center">
   <img src="imgs/model_performace.png" >
