@@ -73,6 +73,8 @@ Performance Results
 | 0.11 seconds| 0.14 seconds   | 0.15 seconds  |
 
 
+When looking at raw acceleration data, the statistics approach didn't do poorly. We got a weighted average F1 score of 0.91 however, it leaves the implementer wanting more when it comes to dynamic situations. By using Power Spectral Density, we were able to better classify dynamic situations, and joining the two gave the most accurate model with a weighted average F1 score of 0.94.
+
 
 ## Appendix
 
