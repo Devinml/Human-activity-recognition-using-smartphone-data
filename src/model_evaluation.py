@@ -8,12 +8,12 @@ import matplotlib.pyplot as plt
 
 def select_model(data_set_bool):
     """
-    Loads the model that coresponds to the correct 
+    Loads the model that coresponds to the correct
     training data
     Parameters
     ----------
     data_set_bool -> Boolean
-    True False or None 
+    True False or None
     Returns
     -------
     Model trained on specific data
@@ -41,7 +41,7 @@ def evaluate_model(data_set_bool):
     Parameters
     ----------
     data_set_bool -> Boolean
-    True False or None 
+    True False or None
     Returns
     -------
     results of model perfomance
@@ -57,7 +57,7 @@ def get_avg_runtime(data_set_bool):
     Evaluates the average runtime of a model
     ----------
     data_set_bool -> Boolean
-    True False or None 
+    True False or None
     Returns
     -------
     list of times it that it took the model
