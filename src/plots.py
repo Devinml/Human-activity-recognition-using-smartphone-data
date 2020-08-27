@@ -77,7 +77,6 @@ def boxplots(df, fig, ax, acc_metric):
                                           'Laying'])
     ax.set_title(acc_metric + ' acc at Activity')
     ax.set_ylabel('Acc(gs)')
-    ax.set_xlabel('Activity')
     plt.xticks(rotation=45)
 
 
@@ -159,6 +158,7 @@ def main():
     fig6, ax6 = plt.subplots(figsize=(10, 9))
     boxplots(df=df, fig=fig6, ax=ax6, acc_metric='gyroZ')
     barplot()
+    bbox_inches='tight'
     plt.show()
 
 
