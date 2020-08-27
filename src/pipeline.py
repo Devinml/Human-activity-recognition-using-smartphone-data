@@ -93,11 +93,11 @@ def write_processed_data(log, df, method):
                              'gyroz_0_1.17',
                              'gyroz_1.17_2.34',
                              'gyroz_2.34_4.1'])
-        # Here I am looping through each participant and activity 
+        # Here I am looping through each participant and activity
         # to make sure no data leakage occurs
         for i in range(len(participants)):
             for j in range(len(activities)):
-                # This print statements just lets me know the program 
+                # This print statements just lets me know the program
                 # is still running because it takes a while
                 print(f'participant : {i}  ' + ('='*j) + '>')
                 user = participants[i]
@@ -156,6 +156,8 @@ def spectrum_method(data, writer, i, j, participants, activities):
     --------
     None
     """
+    # This calls my class and instanciates it with a subset of my data
+    # only taken in my window
     intense = IntensityBands(data)
     (x1, x2, x3,
      y1, y2, y3,
