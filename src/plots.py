@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
+import numpy as np
 
 
 def x_y_z_gyros(df, activity):
@@ -80,6 +81,56 @@ def boxplots(df, fig, ax, acc_metric):
     plt.xticks(rotation=45)
 
 
+def barplot():
+    fig_7, ax_7 = plt.subplots(figsize=(12, 8))
+    labels = ['Walking', 'Walking Up', 'Walking Down',
+              'Sitting', 'Standing', 'Laying']
+    stats_f1 = [0.87, 0.86, 0.93, 0.91, 0.92, 0.99]
+    spec_f1 = [0.91, 0.86, 0.85, 0.75, 0.74, 0.77]
+    combined_f1 = [0.93, 0.89, 0.96, 0.91, 0.93, 0.99]
+    x = np.arange(len(labels))
+    width = 0.25
+    rects1 = ax_7.bar(x - width,
+                      spec_f1, width,
+                      label='Spec F1',
+                      color='darkseagreen')
+    rects2 = ax_7.bar(x, stats_f1,
+                      width,
+                      label='Stats F1',
+                      color='orchid')
+    rects3 = ax_7.bar(x + width, combined_f1,
+                      width,
+                      label='Combined F1',
+                      color='steelblue')
+
+    def autolabel(rects):
+        """
+        Attach a text label above each bar in *rects*,
+        displaying its height. In side this function because
+        it is only used here"""
+        for rect in rects:
+            font = {'size': 12}
+            plt.rc('font', **font)
+            height = rect.get_height()
+            ax_7.annotate('{}'.format(height),
+                          xy=(rect.get_x() + rect.get_width() / 2, height),
+                          xytext=(0, 3),  # 3 points vertical offset
+                          textcoords="offset points",
+                          ha='center', va='bottom')
+    autolabel(rects1)
+    autolabel(rects2)
+    autolabel(rects3)
+    font = {'size': 16}
+    plt.rc('font', **font)
+    ax_7.set_ylabel('F1 Scores')
+    ax_7.set_title('Scores By Group and Dataset')
+    ax_7.set_xticks(x)
+    ax_7.set_xticklabels(labels, rotation=45)
+    ax_7.legend(loc='lower right')
+    bbox_inches = 'tight'
+    plt.tight_layout()
+
+
 def main():
     """
     This function runs all of the plots I want to keep
@@ -107,6 +158,7 @@ def main():
     boxplots(df=df, fig=fig5, ax=ax5, acc_metric='gyroY')
     fig6, ax6 = plt.subplots(figsize=(10, 9))
     boxplots(df=df, fig=fig6, ax=ax6, acc_metric='gyroZ')
+    barplot()
     plt.show()
 
 
