@@ -71,7 +71,9 @@ Stats Dataset:
 | macro avg    |    0.94     | 0.89     |   0.91     |      2026 |
 | weighted avg |    0.94     | 0.89     |   0.91     |      2026 |
 | samples avg  |    0.89     | 0.89     |   0.89     |      2026 |
+
 Spectral Density Dataset: 
+
 |              |   precision |   recall |   f1-score |   support |
 |:-------------|------------:|---------:|-----------:|----------:|
 | Walking      |    0.94     | 0.88     |   0.91     |       363 |
@@ -84,7 +86,9 @@ Spectral Density Dataset:
 | macro avg    |    0.90     | 0.74     |   0.81     |      2071 |
 | weighted avg |    0.90     | 0.74     |   0.81     |      2071 |
 | samples avg  |    0.74     | 0.74     |   0.74     |      2071 |
+
 Combined Dataset:
+
 |              |   precision |   recall |   f1-score |   support |
 |:-------------|------------:|---------:|-----------:|----------:|
 | Walking      |    0.99     | 0.87     |   0.93     |       355 |
