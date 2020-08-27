@@ -2,10 +2,10 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import multilabel_confusion_matrix
 from sklearn.metrics import classification_report, confusion_matrix
-from sklearn.linear_model import LogisticRegressionCV, LogisticRegression
+from sklearn.linear_model import LogisticRegression
 import numpy as np
+import pickle
 
 
 def read_data(spectrum):
@@ -141,18 +141,21 @@ def logclassifier(random_forest, spectrum):
     return prediction, y_test, clf
 
 
-if __name__ == '__main__':
-    preds, y_test_rf, rf = random_forest(True, None)
-    prediction, y_test_log, clf = logclassifier(False, None)
+def results():
     print("Random Forest")
     print(classification_report(y_test_rf, preds))
     print('Log Classification')
     print(classification_report(y_test_log, prediction))
     print('Log Coef')
-    print(clf.coef_.shape)
-    print(clf.classes_)
-    print(confusion_matrix(y_test_log, prediction))
     results = pd.DataFrame(classification_report(y_test_rf,
                                                  preds,
                                                  output_dict=True))
     print(results.T.to_markdown())
+
+
+if __name__ == '__main__':
+    preds, y_test_rf, rf = random_forest(True, True)
+    # Uncomment this line to see the model results
+    # results()
+    filename = 'models/spectral_trained_model.sav'
+    pickle.dump(rf, open(filename, 'wb'))
