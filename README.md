@@ -157,8 +157,8 @@ Power Desity Spectrum of all measurments
   <img src="imgs/gyroZ.png" >
 </p>
 <p align="center">
-  <img src="imgs/psd_gyrox.png.png" >
+  <img src="imgs/psd_gyrox.png" >
 </p>
 <p align="center">
-  <img src="imgs/gyro_y.png.png" >
+  <img src="imgs/gyro_y.png" >
 </p>
