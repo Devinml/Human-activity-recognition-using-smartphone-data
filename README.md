@@ -65,7 +65,7 @@ Using a Random Forest Classifier and with 100 trees I trained the model on 20 of
   <img src="imgs/model_performace.png" >
 </p>
 
-While there was an obvious improvement in model performance, this came at the cost of speed. The model was pickled and then the data was timed on just running the testing set, and the model was tasked to classify the holdout set. The average time was taken to execute each model on the holdout set 15 times. 
+While there was an obvious improvement in model performance, this came at the cost of speed, not a great cost though. The model was pickled and then the data was timed on just running the testing set, and the model was tasked to classify the holdout set. The average time was taken to execute each model on the holdout set 15 times. 
 
 Performance Results
 | Stats Model | Spectrum Model | Combined Model|
@@ -74,8 +74,9 @@ Performance Results
 
 
 
+## Appendix
 
-
+Results of Each Trained Model. 
 Stats Dataset: 
 |              |   precision |   recall |   f1-score |   support |
 |:-------------|------------:|---------:|-----------:|----------:|
@@ -120,4 +121,44 @@ Combined Dataset:
 | weighted avg |    0.95     | 0.92     |   0.94     |      2026 |
 | samples avg  |    0.92     | 0.92     |   0.92     |      2026 |
 
+Stats Plots of all measurments
 
+
+<p align="center">
+  <img src="imgs/X_acc_box.png" >
+</p>
+<p align="center">
+  <img src="imgs/Y_acc_box.png" >
+</p>
+<p align="center">
+  <img src="imgs/Z_acc_box.png" >
+</p>
+<p align="center">
+  <img src="imgs/gyroX_acc_box.png" >
+</p>
+<p align="center">
+  <img src="imgs/gyroY_acc_box.png" >
+</p>
+<p align="center">
+  <img src="imgs/gyroZ_acc_box.png" >
+</p>
+
+Power Desity Spectrum of all measurments
+<p align="center">
+  <img src="imgs/psd_x.png" >
+</p>
+<p align="center">
+  <img src="imgs/psd_y.png" >
+</p>
+<p align="center">
+  <img src="imgs/psd_z.png" >
+</p>
+<p align="center">
+  <img src="imgs/gyroZ.png" >
+</p>
+<p align="center">
+  <img src="imgs/psd_gyrox.png.png" >
+</p>
+<p align="center">
+  <img src="imgs/gyro_y.png.png" >
+</p>

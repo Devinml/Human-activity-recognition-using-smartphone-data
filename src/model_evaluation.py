@@ -7,6 +7,17 @@ import matplotlib.pyplot as plt
 
 
 def select_model(data_set_bool):
+    """
+    Loads the model that coresponds to the correct 
+    training data
+    Parameters
+    ----------
+    data_set_bool -> Boolean
+    True False or None 
+    Returns
+    -------
+    Model trained on specific data
+    """
     if data_set_bool:
         file_name = 'models/spectral_trained_model.sav'
         infile = open(file_name, 'rb')
@@ -25,6 +36,16 @@ def select_model(data_set_bool):
 
 
 def evaluate_model(data_set_bool):
+    """
+    Evaluates the pickled model on the holdout dataset
+    Parameters
+    ----------
+    data_set_bool -> Boolean
+    True False or None 
+    Returns
+    -------
+    results of model perfomance
+    """
     (_, X_test, _, y_test) = prep_data(True, data_set_bool)
     model = select_model(data_set_bool)
     result = model.score(X_test, y_test)
@@ -32,6 +53,15 @@ def evaluate_model(data_set_bool):
 
 
 def get_avg_runtime(data_set_bool):
+    """
+    Evaluates the average runtime of a model
+    ----------
+    data_set_bool -> Boolean
+    True False or None 
+    Returns
+    -------
+    list of times it that it took the model
+    """
     list_of_times = []
     for i in range(15):
         start = time.time()
