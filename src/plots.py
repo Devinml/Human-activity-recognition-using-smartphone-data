@@ -81,7 +81,7 @@ def boxplots(df, fig, ax, acc_metric):
 
 
 def barplot():
-    fig_7, ax_7 = plt.subplots(figsize=(12, 8))
+    fig_7, ax_7 = plt.subplots(figsize=(12, 12))
     labels = ['Walking', 'Walking Up', 'Walking Down',
               'Sitting', 'Standing', 'Laying']
     stats_f1 = [0.87, 0.86, 0.93, 0.91, 0.92, 0.99]
@@ -145,17 +145,17 @@ def main():
     plt.rc('font', **font)
     df = pd.read_csv('data/merged_data_save.csv')
     plt.style.use('ggplot')
-    fig, ax = plt.subplots(figsize=(10, 9))
+    fig, ax = plt.subplots(figsize=(12, 12))
     boxplots(df=df, fig=fig, ax=ax, acc_metric='X')
-    fig2, ax2 = plt.subplots(figsize=(10, 9))
+    fig2, ax2 = plt.subplots(figsize=(12, 12))
     boxplots(df=df, fig=fig2, ax=ax2, acc_metric='Y')
-    fig3, ax3 = plt.subplots(figsize=(10, 9))
+    fig3, ax3 = plt.subplots(figsize=(12, 12))
     boxplots(df=df, fig=fig3, ax=ax3, acc_metric='Z')
-    fig4, ax4 = plt.subplots(figsize=(10, 9))
+    fig4, ax4 = plt.subplots(figsize=(12, 12))
     boxplots(df=df, fig=fig4, ax=ax4, acc_metric='gyroX')
-    fig5, ax5 = plt.subplots(figsize=(10, 9))
+    fig5, ax5 = plt.subplots(figsize=(12, 12))
     boxplots(df=df, fig=fig5, ax=ax5, acc_metric='gyroY')
-    fig6, ax6 = plt.subplots(figsize=(10, 9))
+    fig6, ax6 = plt.subplots(figsize=(12, 12))
     boxplots(df=df, fig=fig6, ax=ax6, acc_metric='gyroZ')
     barplot()
     bbox_inches = 'tight'
